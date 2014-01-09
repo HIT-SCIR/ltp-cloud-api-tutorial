@@ -9,7 +9,8 @@ LTP Cloud REST API 编程调用示例
 5. **用户认证简洁**：API_KEY取代了旧版email:token的认证方式，作为用户的统一授权方式。
 
 用户在[语言云](http://ltp-cloud.com)网站上注册成功后即可获得使用API的API_KEY。
-有关更多API的使用方法，请参考：[语言云新版API使用文档](http://ltp-cloud.com/document/new/)
+
+有关更多API的使用方法，请参考：[语言云新版API使用文档](http://ltp-cloud.com/document/new/)。
 
 #### 其他链接
 
