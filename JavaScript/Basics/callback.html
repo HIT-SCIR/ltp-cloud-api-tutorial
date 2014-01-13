@@ -1,8 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>A web demo for ltp api (js http request)</title>
+    <title>A web demo for ltp api (js callback)</title>
     <script>
+    var foo = function(data){
+        result = JSON.stringify(data);
+        document.getElementById("result").innerHTML = result;
+    };
+
     function analyze() {
         var base     = "http://api.ltp-cloud.com/analysis/?";
         var api_key  = "YourApiKey";
@@ -15,17 +20,13 @@
                         + "api_key="   + api_key   + "&text="   + text
                         + "&pattern="  + pattern   + "&format=" + format);
 
-        var xmlHttp  = new XMLHttpRequest();
-        xmlHttp.open("GET", uri, false);
-        xmlHttp.send( null );
-
-        document.getElementById("result").innerHTML = xmlHttp.responseText;
+        var script = document.createElement('script');
+        script.setAttribute('src', uri);
+        document.getElementsByTagName('head')[0].appendChild(script);
     }
     </script>
 </head>
 <body>
-    <div>This example shows how to use javascript to get ltp-cloud api result
-        (http request).</div>
     <input type="text" id="text" />
     <select id="pattern">
         <option value="ws">Word Segment</option>
