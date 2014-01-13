@@ -18,7 +18,7 @@ def POSTagWithCustomSegmentation():
             "api_key" : "YourApiKey",
             "text"    : xml,
             "format"  : "plain",
-            "pattern" : "postag"}
+            "pattern" : "pos"}
 
     params = urllib.urlencode(data)
 
