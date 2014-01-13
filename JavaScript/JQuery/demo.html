@@ -1,15 +1,21 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset ="utf-8" />
     <title>A web demo for ltp api (jquery)</title>
     <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js">
     </script>
     <script>
+    var foo = function(data){
+        result = JSON.stringify(data);
+        $("#result").text(result);
+    };
+
     function analyze() {
         var base     = "http://api.ltp-cloud.com/analysis/?";
         var api_key  = "YourApiKey";
-        var pattern  = $("#pattern :selected").text();
-        var text     = $("#text").text()
+        var pattern  = $("#pattern :selected").val();
+        var text     = $("#text").val();
 
         var format   = "json";
         var uri      = (base 
@@ -25,9 +31,9 @@
                 // at the same time
                 jsonpCallback : "foo",
                 url : uri,
-                success: function(data){
-                    reulst = JSON.stringify(data);
-                    $("#result").text(result);
+                success: function(data) {
+                    // reulst = JSON.stringify(data);
+                    // $("#result").text(result);
                 },
                 error : function(XMLHttpRequest, textStatus, errorThrown) {
                     alert(XMLHttpRequest.status
