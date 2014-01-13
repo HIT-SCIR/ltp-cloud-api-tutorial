@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>A web demo for ltp api</title>
+    <script>
+    function analyze() {
+    	var base     = "http://192.168.137.2/analysis/?";
+        var api_key  = "YourApiKey";
+        var element  = document.getElementById("pattern");
+        var pattern  = element.options[element.selectedIndex].value;
+        var text     = document.getElementById("text").value;
+
+        var format   = "json";
+        var uri      = (base 
+        				+ "api_key="   + api_key   + "&text="   + text
+        		        + "&pattern="  + pattern   + "&format=" + format);
+
+        var xmlHttp  = new XMLHttpRequest();
+        xmlHttp.open("GET", uri, false);
+        xmlHttp.send( null );
+        
+        document.getElementById("result").innerHTML = xmlHttp.responseText;
+	}
+    </script>
+</head>
+<body>
+    <input type="text" id="text" />
+    <select id="pattern">
+        <option value="ws">Word Segment</option>
+        <option value="pos">POS Tagging</option>
+        <option value="dp">Dependency Parsing</option>
+        <option value="ner">Named Entity Recognization</option>
+        <option value="srl">Semantic Role Labeling</option>
+    </select>
+    <button onclick="analyze()">submit</button> 
+    <div id="result"></div>
+</body>
+</html>
