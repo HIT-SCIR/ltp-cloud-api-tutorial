@@ -1,3 +1,8 @@
+/*
+ * This example shows how to use Java to build http connection and request
+ * the ltp-cloud service for perform full-stack Chinese language analysis
+ * and get results in specified formats
+ */
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -8,9 +13,16 @@ import java.net.URLEncoder;
 
 public class SimpleAPI {
     public static void main(String[] args) throws IOException {
+        if (args.length < 1 || !(args[0].equals("xml") 
+                                || args[0].equals("json") 
+                                || args[0].equals("conll"))) {
+            System.out.println("Usage: java SimpleAPI [xml/json/conll]");
+            return;
+        }
+
         String api_key = "YourApiKey";
         String pattern = "all";
-        String format  = "xml";
+        String format  = args[0];
         String text    = "我爱北京天安门。";
         text = URLEncoder.encode(text, "utf-8");
 
