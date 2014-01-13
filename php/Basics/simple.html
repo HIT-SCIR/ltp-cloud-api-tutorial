@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset ="utf-8" />
+    <title>A web demo for ltp api (php)</title>
+</head>
+<body>
+    <div></div>
+    <form action="simple.php" method="post">
+        <input type="text" id="text" name="text" />
+        <select id="pattern" name="pattern">
+            <option value="ws">Word Segment</option>
+            <option value="pos">POS Tagging</option>
+            <option value="dp">Dependency Parsing</option>
+            <option value="ner">Named Entity Recognization</option>
+            <option value="srl">Semantic Role Labeling</option>
+        </select>
+        <select id="format" name="format">
+            <option value="xml">XML</option>
+            <option value="json">JSON</option>
+            <option value="conll">CONLL</option>
+        </select>
+        <input type="submit" id="submit" />
+    </form>
+</body>
+</html>
