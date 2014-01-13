@@ -4,7 +4,7 @@
     <title>A web demo for ltp api</title>
     <script>
     function analyze() {
-    	var base     = "http://192.168.137.2/analysis/?";
+        var base     = "http://192.168.137.2/analysis/?";
         var api_key  = "YourApiKey";
         var element  = document.getElementById("pattern");
         var pattern  = element.options[element.selectedIndex].value;
@@ -12,15 +12,15 @@
 
         var format   = "json";
         var uri      = (base 
-        				+ "api_key="   + api_key   + "&text="   + text
-        		        + "&pattern="  + pattern   + "&format=" + format);
+                        + "api_key="   + api_key   + "&text="   + text
+                        + "&pattern="  + pattern   + "&format=" + format);
 
         var xmlHttp  = new XMLHttpRequest();
         xmlHttp.open("GET", uri, false);
         xmlHttp.send( null );
         
         document.getElementById("result").innerHTML = xmlHttp.responseText;
-	}
+    }
     </script>
 </head>
 <body>
