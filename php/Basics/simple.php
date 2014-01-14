@@ -1,6 +1,4 @@
 <?php
-// This example shows how to use php to access
-
 if (isset($_POST["text"]) && isset($_POST["pattern"]) && isset($_POST["format"])) {
     $uri     = "http://api.ltp-cloud.com/analysis/?";
     $apikey  = "YourApiKey";
@@ -9,19 +7,19 @@ if (isset($_POST["text"]) && isset($_POST["pattern"]) && isset($_POST["format"])
     $format  = $_POST["format"];
 
     $url = ($uri
-            . "api_key=" . $apikey  . "&"
-            . "text="    . $text    . "&"
-            . "pattern=" . $pattern . "&"
+            . "api_key=" . $apikey          . "&"
+            . "text="    . urlencode($text) . "&"
+            . "pattern=" . $pattern         . "&"
             . "format="  . $format);
 
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, $url);
     curl_setopt($ch, CURLOPT_HEADER, 0);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
 
     // grab URL and pass it to the browser
-    $data = curl_exec($ch);
+    $response = curl_exec($ch);
+    echo $response;
     curl_close($ch);
-
-    echo $data;
 }
 ?>
