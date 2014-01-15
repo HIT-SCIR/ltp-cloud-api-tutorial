@@ -43,10 +43,13 @@ def Analyze(text, pattern):
 
     params   = urllib.urlencode(data)
     url      = uri_base + params
-    response = urllib2.urlopen(url)
-    content  = response.read().strip()
 
-    return content
+    try:
+        response = urllib2.urlopen(url)
+        content  = response.read().strip()
+        return content
+    except urllib2.HTTPError, e:
+        return e.reason
 
 if __name__=="__main__":
     msg = ""

@@ -23,12 +23,15 @@ if __name__ == '__main__':
     format   = sys.argv[1]
     pattern  = "all"
 
-    url      = (uri_base 
+    url      = (uri_base
                + "api_key=" + api_key + "&"
                + "text="    + text    + "&"
                + "format="  + format  + "&"
                + "pattern=" + "all")
 
-    response = urllib2.urlopen(url)
-    content  = response.read().strip()
-    print content
+    try:
+        response = urllib2.urlopen(url)
+        content  = response.read().strip()
+        print content
+    except urllib2.HTTPError, e:
+        print >> sys.stderr, e.reason
