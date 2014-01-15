@@ -19,12 +19,15 @@ import java.io.StringReader;
 import java.io.StringWriter;
 import java.io.FileReader;
 import java.io.BufferedReader;
+import java.io.DataOutputStream;
+import java.io.InputStreamReader;
 import java.io.File;
 import java.io.IOException;
 
 import java.net.URL;
 import java.net.URLConnection;
 import java.net.URLEncoder;
+import java.net.HttpURLConnection;
 
 public class CustomSegmentation {
     public static void main(String argv[]) {
@@ -86,6 +89,8 @@ public class CustomSegmentation {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+        return null;
     }
 
     public void analyze(String filename) {
@@ -96,33 +101,56 @@ public class CustomSegmentation {
             while (line != null) {
                 String[] words = line.trim().split("[\t| ]+");
                 String text = buildLTMLFromWords(words);
-                line = br.readLine();
+
+                if (text == null) {
+                    continue;
+                }
+
+                URL url = new URL(url_base);
+                HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 
                 String api_key = "YourApiKey";
                 String pattern = "all";
                 String format  = "xml";
                 text = URLEncoder.encode(text, "utf-8");
 
-                URL url = new URL("http://api.ltp-cloud.com/analysis/?"
-                        + "api_key=" + api_key + "&"
-                        + "text=" + text + "&"
-                        + "format=" + format + "&"
-                        + "pattern=" + pattern);
+                conn.setDoOutput(true);
+                conn.setDoInput(true);
+                conn.setRequestMethod("POST");
+                conn.setRequestProperty("Content-Type",
+                                        "application/x-www-form-urlencoded");
 
-                URLConnection conn = url.openConnection();
                 conn.connect();
+                DataOutputStream out =
+                    new DataOutputStream(conn.getOutputStream());
 
-                BufferedReader innet = new BufferedReader(new InputStreamReader(
-                            conn.getInputStream(),
-                            "utf-8"));
-                String line;
-                while ((line = innet.readLine())!= null) {
-                    System.out.println(line);
+                String content = ("api_key="    + api_key   + "&"
+                                  + "text="     + text      + "&"
+                                  + "pattern="  + pattern   + "&"
+                                  + "format="   + format    + "&"
+                                  + "xml_input=true");
+
+                out.writeBytes(content);
+                out.flush();
+                out.close();
+
+                BufferedReader reader =
+                    new BufferedReader(new InputStreamReader(
+                                       conn.getInputStream(),
+                                       "utf-8"));
+                String result;
+
+                while ((result = reader.readLine()) != null){
+                    System.out.println(result);
                 }
-                innet.close();
+                conn.disconnect();
+
+                line = br.readLine();
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
+
+    private String url_base = "http://api.ltp-cloud.com/analysis/";
 }
