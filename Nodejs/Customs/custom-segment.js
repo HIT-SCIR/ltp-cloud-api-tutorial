@@ -6,12 +6,12 @@ var doc = builder.create('xml4nlp');
 var build_from_words = function(words) {
     var xml4nlp = doc
         .ele('note')
-            .att('sent', 'y')
-            .att('word', 'y')
-            .att('pos',  'n')
-            .att('dp',   'n')
-            .att('ne',   'n')
-            .att('srl',  'n')
+            .att('sent',    'y')
+            .att('word',    'y')
+            .att('pos',     'n')
+            .att('parser',  'n')
+            .att('ne',      'n')
+            .att('srl',     'n')
             .up()
         .ele('doc')
             .ele('para')
