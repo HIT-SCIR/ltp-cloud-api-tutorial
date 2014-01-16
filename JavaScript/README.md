@@ -1,6 +1,11 @@
-Javascript 调用ltp-cloud api实例
+Javascript 调用LTP Cloud API示例
 --------------------------------
 
-1. Javascript发起http请求例子 ./Basics/demo.html
-2. Javascript回调函数例子 ./Basics/callback.html
-3. JQuery函数 ./JQuery/demo.html
+### ./Basics/demo.html
+
+Javascript以GET+回调函数方式调用LTP Cloud API。
+
+### /JQuery/demo.html
+
+使用JQuery中GET方法调用LTP Cloud API。
+
