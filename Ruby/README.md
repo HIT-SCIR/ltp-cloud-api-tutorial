@@ -1,4 +1,4 @@
-Ruby µ÷ÓÃLTP Cloud APIÊ¾Àý
+Ruby è°ƒç”¨LTP Cloud APIç¤ºä¾‹
 --------------------------
 ### ./Basics/simple.rb
 
