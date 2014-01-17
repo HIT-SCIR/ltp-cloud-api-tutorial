@@ -4,7 +4,10 @@ require 'uri'
 require './LTML'
 
 ltml = LTML.new
-ltml.build_from_words(['我', '爱', '北京', '天安门'], 'UTF-8')
+ltml.build_from_words_with_postags([['我', 'r'],
+                                    ['爱', 'v'],
+                                    ['北京', 'ns'],
+                                    ['天安门', 'ns']], 'UTF-8')
 
 params = {
   :api_key    => 'YourApiKey',
