@@ -7,9 +7,21 @@ if (!isset($_POST['nr_words'])) {
     exit(1);
 }
 
-// extract and compose the word list.
 $nr_words = intval($_POST['nr_words']);
 
+if (!isset($_POST['format'])) {
+    exit(1);
+}
+
+$format = $_POST['format'];
+
+if (!isset($_POST['pattern'])) {
+    exit(1);
+}
+
+$pattern = $_POST['pattern'];
+
+// extract and compose the word list.
 $words = array();
 
 for ($i = 0; $i < $nr_words; ++ $i) {
@@ -30,15 +42,14 @@ for ($i = 0; $i < $nr_words; ++ $i) {
 
 $xml = LTML::build_from_words_with_postags($words);
 
+
 $fields = array(
     'api_key' => 'YourApiKey',
     'text'    => $xml->asXML(),
-    'pattern' => 'dp',
-    'format'  => 'conll',
+    'pattern' => $pattern,
+    'format'  => $format,
     'xml_input' => 'true',
 );
-
-echo $fields['text'];
 
 $url = 'http://api.ltp-cloud.com/analysis/?';
 
@@ -62,5 +73,5 @@ curl_setopt($ch, CURLOPT_POSTFIELDS, $fields_string);
 $response = curl_exec($ch);
 curl_close($ch);
 
-echo $response;
+echo '<pre>' + $response + '</pre>';
 ?>
