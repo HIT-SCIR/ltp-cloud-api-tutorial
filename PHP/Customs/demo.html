@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset ="utf-8" />
+    <title>A web demo for ltp api (php)</title>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+</head>
+<body>
+    <form action="custom.php" method="post">
+        <table id="table">
+            <tr>
+                <td>
+                    Pattern: 
+                    <select id="pattern" name="pattern">
+                        <option value="ws">Word Segment</option>
+                        <option value="pos">POS Tagging</option>
+                        <option value="dp">Dependency Parsing</option>
+                        <option value="ner">Named Entity Recognization</option>
+                        <option value="srl">Semantic Role Labeling</option>
+                    </select>
+                </td>
+                <td>
+                    Format:
+                    <select id="format" name="format">
+                        <option value="xml">XML</option>
+                        <option value="json">JSON</option>
+                        <option value="conll">CONLL</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Word:
+                    <input type="text" id="word_0" name="word_0" />
+                </td>
+                <td>
+                    POS:
+                    <select id="pos_0" name="pos_0">
+                        <option value="a">a</option>
+                        <option value="b">b</option>
+                        <option value="c">c</option>
+                        <option value="d">d</option>
+                        <option value="e">e</option>
+                        <option value="g">g</option>
+                        <option value="h">h</option>
+                        <option value="i">i</option>
+                        <option value="j">j</option>
+                        <option value="k">k</option>
+                        <option value="m">m</option>
+                        <option value="n">n</option>
+                        <option value="nd">nd</option>
+                        <option value="nh">nh</option>
+                        <option value="ni">ni</option>
+                        <option value="nl">nl</option>
+                        <option value="ns">ns</option>
+                        <option value="nt">nt</option>
+                        <option value="nz">nz</option>
+                        <option value="o">o</option>
+                        <option value="p">p</option>
+                        <option value="q">q</option>
+                        <option value="r">r</option>
+                        <option value="u">u</option>
+                        <option value="v">v</option>
+                        <option value="wp">wp</option>
+                        <option value="ws">ws</option>
+                        <option value="x">x</option>
+                    </select>
+                </td>
+            </tr>
+        </table>
+        <button type="button" id="addword">Add a word</button>
+        <input id="submit" type="submit" id="submit" />
+        <input id="nr_words" name="nr_words" type="hidden" value="0" />
+    </form>
+    <script>
+        $("#addword").click(function(){
+            var nr_words = parseInt($('#nr_words').val()) + 1;
+            $('#nr_words').val(nr_words);
+            alert(nr_words);
+
+            var html = ('<tr>'
+                        +  '<td>'
+                        +   'Word: '
+                        +   '<input type="text" id="word_' + nr_words + '" name="word_' + nr_words + '">'
+                        +  '</td>'
+                        +  '<td>'
+                        +  '</td>'
+                        +'</tr>');
+            console.log(html);
+            $('#table > tbody:last').append(html)
+            $('#table > tbody > tr:last > td:last')
+                .text('POS: ')
+                    .append($('#pos_0')
+                                .clone()
+                                    .attr('id', 'pos_' + nr_words)
+                                    .attr('name', 'pos_' + nr_words));
+        });
+    </script>
+</body>
+</html>
