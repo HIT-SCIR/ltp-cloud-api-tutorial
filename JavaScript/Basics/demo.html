@@ -5,8 +5,8 @@
     <title>A web demo for ltp api (js callback)</title>
     <script>
     var foo = function(data){
-        result = JSON.stringify(data);
-        document.getElementById("result").innerHTML = result;
+        result = JSON.stringify(data, null, "  ");
+        document.getElementById("result").innerHTML = "<pre>" + result + "</pre>";
     };
 
     function analyze() {

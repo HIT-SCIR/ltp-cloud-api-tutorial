@@ -7,8 +7,8 @@
     </script>
     <script>
     var foo = function(data){
-        result = JSON.stringify(data);
-        $("#result").text(result);
+        result = JSON.stringify(data, null, " ");
+        $("#result pre").text(result);
     };
 
     function analyze() {
@@ -58,6 +58,6 @@
         <option value="srl">Semantic Role Labeling</option>
     </select>
     <button onclick="analyze()">submit</button> 
-    <div id="result"></div>
+    <div id="result"><pre></pre></div>
 </body>
 </html>
