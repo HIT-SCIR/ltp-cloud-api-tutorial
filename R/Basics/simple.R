@@ -1,5 +1,7 @@
+site <- "http://mirror.bjtu.edu.cn/cran/"
+
 if (!require('RCurl')) {
-    install.packages('RCurl', dependencies=TRUE)
+    install.packages('RCurl', repo=site, dependencies=TRUE)
 }
 
 library('RCurl')
