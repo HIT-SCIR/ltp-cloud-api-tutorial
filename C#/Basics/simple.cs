@@ -5,19 +5,21 @@ using System.Text;
 using System.Net;
 using System.IO;
 
-namespace api_example_cs_get
+namespace Simple
 {
     class Program
     {
         static void Main(string[] args)
         {
-            String urlbase = "http://api.ltp-cloud.com/analysis/?";
-            String strParam = String.Empty;
-            String api_key = "";
-            String text = "";
-            String pattern = "";
-            String format = "";
-            strParam = "api_key=" + api_key + "&text=" + text + "&pattern=" + pattern + "&format=" + format;
+            string urlbase  = "http://api.ltp-cloud.com/analysis/?";
+            string api_key  = "YourApiKey";
+            string text     = "我爱北京天安门";
+            string pattern  = "srl";
+            string format   = "conll";
+            string strParam = ("api_key=" + api_key + 
+                               "&text=" + text + 
+                               "&pattern=" + pattern + 
+                               "&format=" + format);
             Encoding encoding = Encoding.GetEncoding("utf-8");
             HttpWebRequest req = WebRequest.Create(urlbase+strParam) as HttpWebRequest;
             req.Method = "GET";
