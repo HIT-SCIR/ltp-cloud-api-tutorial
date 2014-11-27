@@ -3,7 +3,7 @@
 require 'net/http'
 require 'uri'
 
-base_uri = 'http://api.ltp-cloud.com/analysis/?'
+base_uri = 'http://ltpapi.voicecloud.cn/analysis/?'
 api_key  = 'YourApiKey'
 text     = URI::encode('这是一个测试的例子。')
 pattern  = 'all'

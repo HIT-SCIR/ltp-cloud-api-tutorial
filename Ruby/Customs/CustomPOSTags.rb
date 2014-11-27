@@ -17,7 +17,7 @@ params = {
   :xml_input  => 'true'
 }
 
-url = URI.parse("http://api.ltp-cloud.com/analysis/")
+url = URI.parse("http://ltpapi.voicecloud.cn/analysis/")
 
 response = Net::HTTP.post_form(url, params)
 
