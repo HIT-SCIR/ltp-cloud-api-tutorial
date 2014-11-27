@@ -6,7 +6,7 @@ if (!require('RCurl')) {
 
 library('RCurl')
 
-uri <- 'http://api.ltp-cloud.com/analysis/?'
+uri <- 'http://ltpapi.voicecloud.cn/analysis/?'
 params <- c('api_key=YourApiKey',
             'text=我爱北京天安门',
             'pattern=srl',

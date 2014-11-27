@@ -11,7 +11,7 @@ namespace Simple
     {
         static void Main(string[] args)
         {
-            string urlbase  = "http://api.ltp-cloud.com/analysis/?";
+            string urlbase  = "http://ltpapi.voicecloud.cn/analysis/?";
             string api_key  = "YourApiKey";
             string text     = "我爱北京天安门";
             string pattern  = "srl";

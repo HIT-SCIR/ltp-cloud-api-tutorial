@@ -19,7 +19,7 @@ def ParsingWithCustomPostags():
                            ("示例",     "n")])
     xml  = ltml.tostring()
 
-    uri_base = "http://api.ltp-cloud.com/analysis/?"
+    uri_base = "http://ltpapi.voicecloud.cn/analysis/?"
 
     data = {
             "api_key"   : "YourApiKey",

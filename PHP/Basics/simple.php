@@ -1,6 +1,6 @@
 <?php
 if (isset($_POST["text"]) && isset($_POST["pattern"]) && isset($_POST["format"])) {
-    $uri     = "http://api.ltp-cloud.com/analysis/?";
+    $uri     = "http://ltpapi.voicecloud.cn/analysis/?";
     $apikey  = "YourApiKey";
     $text    = $_POST["text"];
     $pattern = $_POST["pattern"];

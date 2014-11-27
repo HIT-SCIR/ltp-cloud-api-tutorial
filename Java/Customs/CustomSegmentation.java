@@ -152,5 +152,5 @@ public class CustomSegmentation {
         }
     }
 
-    private String url_base = "http://api.ltp-cloud.com/analysis/";
+    private String url_base = "http://ltpapi.voicecloud.cn/analysis/";
 }

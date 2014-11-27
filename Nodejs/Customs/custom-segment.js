@@ -37,7 +37,7 @@ var data = querystring.stringify({
 });
 
 var request = http.request({
-            host   : 'api.ltp-cloud.com',
+            host   : 'ltpapi.voicecloud.cn',
             port   : '80',
             path   : '/analysis/',
             method : 'post',

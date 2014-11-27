@@ -13,7 +13,7 @@ def POSTagWithCustomSegmentation():
     ltml.build_from_words(["自定义", "分词", "结果", "的", "示例"])
     xml  = ltml.tostring()
 
-    uri_base = "http://api.ltp-cloud.com/analysis/?"
+    uri_base = "http://ltpapi.voicecloud.cn/analysis/?"
 
     data = {
             "api_key"  : "YourApiKey",

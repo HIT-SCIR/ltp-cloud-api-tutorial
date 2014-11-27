@@ -26,7 +26,7 @@ public class SimpleAPI {
         String text    = "我爱北京天安门。";
         text = URLEncoder.encode(text, "utf-8");
 
-        URL url     = new URL("http://api.ltp-cloud.com/analysis/?"
+        URL url     = new URL("http://ltpapi.voicecloud.cn/analysis/?"
                               + "api_key=" + api_key + "&"
                               + "text="    + text    + "&"
                               + "format="  + format  + "&"

@@ -11,7 +11,7 @@ namespace CustomSegmentation
 {
     class Program
     {
-        string uriBase = "http://api.ltp-cloud.com/analysis/";
+        string uriBase = "http://ltpapi.voicecloud.cn/analysis/";
         string apiKey  = "YourApiKey";
 
         static void Main(string[] args)

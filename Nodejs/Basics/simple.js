@@ -1,7 +1,7 @@
 var http = require("http");
 
 var options = {
-    hostname: 'api.ltp-cloud.com',
+    hostname: 'ltpapi.voicecloud.cn',
     port: 80,
     path: ('/analysis/?'
             + 'api_key=' + 'YourApiKey' + '&'

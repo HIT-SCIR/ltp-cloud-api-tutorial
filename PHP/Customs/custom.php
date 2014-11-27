@@ -51,7 +51,7 @@ $fields = array(
     'xml_input' => 'true',
 );
 
-$url = 'http://api.ltp-cloud.com/analysis/?';
+$url = 'http://ltpapi.voicecloud.cn/analysis/?';
 
 $fields_string = '';
 

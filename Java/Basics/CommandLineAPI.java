@@ -30,7 +30,7 @@ public class CommandLineAPI {
         System.out.println("text: " + text);
         text = URLEncoder.encode(text, "utf-8");
 
-        URL url = new URL("http://tapi.ltp-cloud.com/analysis/?"
+        URL url = new URL("http://ltpapi.voicecloud.cn/analysis/?"
                           + "api_key=" + apikey  + "&"
                           + "text="    + text    + "&"
                           + "format="  + format  + "&"

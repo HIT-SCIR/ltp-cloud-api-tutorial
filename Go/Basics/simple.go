@@ -14,7 +14,7 @@ func main() {
     pattern := "all"
     format  := "conll"
 
-    uri := strings.Join([]string{"http://api.ltp-cloud.com/analysis/?",
+    uri := strings.Join([]string{"http://ltpapi.voicecloud.cn/analysis/?",
                                  "api_key=",  api_key, "&",
                                  "text=",     text,    "&",
                                  "pattern=",  pattern, "&",
