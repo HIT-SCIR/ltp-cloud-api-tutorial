@@ -14,7 +14,7 @@ if __name__ == '__main__':
         print >> sys.stderr, "usage: %s [xml/json/conll]" % sys.argv[0]
         sys.exit(1)
 
-    uri_base = "http://api.ltp-cloud.com/analysis/?"
+    uri_base = "http://ltpapi.voicecloud.cn/analysis/"
     api_key  = "YourApiKey"
     text     = "我爱北京天安门"
     # Note that if your text contain special characters such as linefeed or '&',
