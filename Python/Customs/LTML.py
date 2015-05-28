@@ -6,6 +6,7 @@ from xml.etree.ElementTree import ElementTree
 from xml.etree.ElementTree import Element
 from xml.etree.ElementTree import SubElement
 from xml.etree.ElementTree import tostring
+from xml.dom import minidom
 
 class LTML(object):
     def __init__(self, xmlstr = None, encoding="utf-8"):
@@ -79,16 +80,16 @@ class LTML(object):
             word = words[0]
             if isinstance(word, str):
                 flag = "seg"
-            elif (isinstance(word, list)
+            elif ((isinstance(word, list) or isinstance(word, tuple))
                     and len(word) == 2
                     and isinstance(word[0], str)
                     and isinstance(word[1], str)):
                 flag = "pos"
-            elif (isinstance(word, tuple)
-                    and len(word) == 2
+            elif ((isinstance(word, list) or isinstance(word, tuple))
+                    and len(word) == 4
                     and isinstance(word[0], str)
                     and isinstance(word[1], str)):
-                flag = "pos"
+                flag = "dp"
             else:
                 flag = "unknown"
 
@@ -105,25 +106,41 @@ class LTML(object):
             self._clean_note()
 
             if flag == "seg":
-                for id, word in enumerate(words):
+                for i, word in enumerate(words):
                     sent.append(Element('word', {
-                        'id': ('%d' % id),
+                        'id': ('%d' % i),
                         'cont': word.decode(encoding),}))
 
                 sent.set('cont', ("".join(words)).decode(encoding))
                 self._set_word_on_note()
             elif flag == "pos":
-                for id, wordpos in enumerate(words):
+                for i, wordpos in enumerate(words):
                     word, pos  = wordpos
                     sent.append(Element('word', {
-                        'id': ('%d' % id),
+                        'id': ('%d' % i),
                         'cont' : word.decode(encoding),
                         'pos' : pos,}))
                 sent.set('cont', ("".join([word[0] for word in words])).decode(encoding))
                 self._set_pos_on_note()
+            elif flag == "dp":
+                for i, rep in enumerate(words):
+                    word, pos, head, deprel = rep
+                    sent.append(Element('word', {
+                        'id': ('%d' % i),
+                        'cont' : word.decode(encoding),
+                        'pos' : pos,
+                        'parent': str(int(head)-1),
+                        'relation': deprel}))
+                sent.set('cont', ("".join([word[0] for word in words])).decode(encoding))
+                self._set_parser_on_note()
 
             self.dom = self.xml4nlp
 
     def tostring(self, encoding="utf-8"):
         return tostring(self.dom, encoding)
 
+    def prettify(self, encoding="utf-8"):
+        """Return a pretty-printed XML string for the Element."""
+        rough_string = tostring(self.dom, encoding)
+        reparsed = minidom.parseString(rough_string)
+        return reparsed.toprettyxml(indent="\t").encode(encoding)

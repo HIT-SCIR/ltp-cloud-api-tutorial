@@ -16,7 +16,7 @@ def CustomPOSTags():
     ltml.build_from_words([("天安门", "N"),
                            ("上", "P"),
                            ("太阳升", "V")])
-    print ltml.tostring()
+    print ltml.prettify()
 
 if __name__=="__main__":
     CustomSegmentation()
