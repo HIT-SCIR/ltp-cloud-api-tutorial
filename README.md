@@ -47,6 +47,12 @@ LTP Cloud API 编程调用示例
 
 有关更多API的使用方法，请参考：[语言云新版API使用文档](http://ltp-cloud.com/document/new/)。
 
+### 注意
+
+该tutorial中的rest api url均指向`ltpapi.voicecloud.cn`，为讯飞语音云合作提供的服务，在2015年末服务分离后，其API_KEY并不与`ltp-cloud.com`通用。故如果您按照上述方式在`ltp-cloud.com`注册，其得到的API_KEY仅能用于请求`api.ltp-cloud.com`. 请注意根据实际需求，修改url.
+
+`ltp-cloud.com`用于提供最新科研成果，属于demo性质；如果需要大规模分析，请使用[讯飞语音云](http://www.xfyun.cn/) 或者[本地部署](https://github.com/HIT-SCIR/ltp)（这两个均不支持语义依存图分析，如果需要语义依存图分析，请查看[ltp-graphsdp](https://github.com/LtpDemo/ltp_graphsdp.git)）
+
 #### 其他链接
 
 * [哈工大社会计算与信息检索研究中心](http://ir.hit.edu.cn/)
