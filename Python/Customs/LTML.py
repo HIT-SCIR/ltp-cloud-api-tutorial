@@ -32,6 +32,14 @@ class LTML(object):
         self._set_pos_on_note()
         self.note.set("parser", "y")
 
+    def _set_semantic_parser_on_note(self):
+        self._set_pos_on_note()
+        self.note.set("semparser", "y")
+
+    def _set_semantic_graph_parser_on_note(self):
+        self._set_pos_on_note()
+        self.note.set("lstmsemparser", "y")
+
     def _set_srl_on_note(self):
         self._set_parser_on_note()
         self.note.set("srl", "y")
@@ -41,12 +49,14 @@ class LTML(object):
         self.note.set("ne", "y")
 
     def _clean_note(self):
-        self.note.set("sent",   "n")
-        self.note.set("word",   "n")
-        self.note.set("pos",    "n")
-        self.note.set("parser", "n")
-        self.note.set("ne",     "n")
-        self.note.set("srl",    "n")
+        self.note.set("sent",          "n")
+        self.note.set("word",          "n")
+        self.note.set("pos",           "n")
+        self.note.set("ne",            "n")
+        self.note.set("parser",        "n")
+        self.note.set("semparser",     "n")
+        self.note.set("lstmsemparser", "n")
+        self.note.set("srl",           "n")
 
     # build ltml from string
     #
